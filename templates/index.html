@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask Template Example</title>
+  </head>
+  <body>
+    <div>
+      <p>{{ message }}</p>
+      <p>My Contacts:</p>
+          {% for contact in contacts %}
+          <p style='text-indent: 3%'>{{ contact }}</p>
+          {% endfor %}
+    </div>
+  </body>
+</html>
