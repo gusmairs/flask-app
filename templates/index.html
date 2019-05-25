@@ -8,7 +8,8 @@
     <div>
       <p>{{ message }}</p>
       <p>My Contacts:</p>
-      <table id='names'>
+      {{ table|safe }}
+      <!-- <table id='names'>
         <tr>
           {% for key, value in records[0].items() %}
             <th>{{ key }}</th>
@@ -20,7 +21,7 @@
             <td>{{ row['age'] }}</td>
           </tr>
         {% endfor %}
-      </table>
+      </table> -->
     </div>
   </body>
 </html>

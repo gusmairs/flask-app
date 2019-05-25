@@ -3,14 +3,22 @@ html {
   font-size: 16px;
 }
 
-table {
+table.dataframe {
+  /* border: none; */
+  /* border-bottom: 1px solid #C8C8C8; */
+  /* border-collapse: collapse; */
+  text-align:left;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 0.9em;
+  /* border: None;
   margin: 4px;
   border-left: 16px;
   border-left: 16px;
-  border-spacing: 6px;
+  border-spacing: 6px; */
 }
 
-th {
+/* th {
   color: steelblue;
   font-style: normal;
   font-size: 14px;
@@ -21,4 +29,4 @@ td {
   text-align: center;
   font-size: 12px;
   text-indent: 10%;
-}
+} */
