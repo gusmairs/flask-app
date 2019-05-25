@@ -2,5 +2,7 @@ name,age
 amy,44
 bob,23
 lucy,12
-linus,34
 steve,67
+jimmy,87
+sally,23
+peter,76
