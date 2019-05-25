@@ -1,5 +1,6 @@
-amy
-bob
-lucy
-linus
-steve
+name,age
+amy,44
+bob,23
+lucy,12
+linus,34
+steve,67

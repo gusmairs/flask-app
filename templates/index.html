@@ -2,14 +2,25 @@
 <html>
   <head>
     <title>Flask Template Example</title>
+    <link href='app.css' rel='stylesheet'>
   </head>
   <body>
     <div>
       <p>{{ message }}</p>
       <p>My Contacts:</p>
-          {% for contact in contacts %}
-          <p style='text-indent: 3%'>{{ contact }}</p>
+      <table id='names'>
+        <tr>
+          {% for key, value in records[0].items() %}
+            <th>{{ key }}</th>
           {% endfor %}
+        </tr>
+        {% for row in records %}
+          <tr>
+            <td>{{ row['name'] }}</td>
+            <td>{{ row['age'] }}</td>
+          </tr>
+        {% endfor %}
+      </table>
     </div>
   </body>
 </html>
