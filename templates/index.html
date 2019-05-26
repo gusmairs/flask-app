@@ -3,12 +3,18 @@
   <head>
     <title>Flask Template Example</title>
     <link href='app.css' rel='stylesheet'>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type='text/javascript' src='app.js'></script>
   </head>
   <body>
     <div>
       <p>{{ message }}</p>
       <p>The list of names:</p>
       {{ table|safe }}
+    </div>
+    <div id='input'>
+      <span>name:</span> <input id='name'></input>
+      <span>age:</span> <input id='age'></input>
     </div>
   </body>
 </html>
