@@ -5,17 +5,18 @@ add_name = function(n, a) {
         method: 'POST',
         data: JSON.stringify({'name': n, 'age': a}),
         success: function(resp) {
-
+            console.log('got it')
+            location.reload()
+            // $('#table_loc' ).load(resp)
         }
     })
 }
 
 $(document).ready(function() {
-    $('input#age').on('keypress', function(e){
+    $('#age').on('keypress', function(e){
         if(e.which == 13) {
-            add_name($('input#name').val()),
-                     $('input#age').val()),
-            )
+            add_name($('#name').val(),
+                     $('#age').val())
         }
     })
 })

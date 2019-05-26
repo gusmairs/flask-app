@@ -4,5 +4,8 @@ bob,23
 lucy,12
 steve,67
 jimmy,87
-sally,23
-peter,76
+ernie,23
+boopsie,56
+nan,20
+fred,34
+dave,56

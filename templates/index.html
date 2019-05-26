@@ -10,9 +10,9 @@
     <div>
       <p>{{ message }}</p>
       <p>The list of names:</p>
-      {{ table|safe }}
+      <div id='table_loc'>{{ table|safe }}</div>
     </div>
-    <div id='input'>
+    <div id='new_data'>
       <span>name:</span> <input id='name'></input>
       <span>age:</span> <input id='age'></input>
     </div>
