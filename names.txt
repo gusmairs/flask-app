@@ -3,9 +3,4 @@ amy,44
 bob,23
 lucy,12
 steve,67
-jimmy,87
-ernie,23
-boopsie,56
-nan,20
-fred,34
-dave,56
+bob,67
