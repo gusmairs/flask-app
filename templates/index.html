@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Flask Template Example</title>
+    <title>Flask jQuery Table Example</title>
     <link href='app.css' rel='stylesheet'>
     <script type="text/javascript" src="jquery.js"></script>
     <script type='text/javascript' src='app.js'></script>
   </head>
+
   <body>
+    <p id='main'>Welcome, table viewer.</p>
     <div>
-      <p>{{ message }}</p>
-      <div id='new_data'>
-        <span>name:</span> <input id='name'></input>
-        <span>age:</span> <input id='age'></input>
-      </div>
-      <p>The list of names:</p>
-      <div id='table_loc'>{{ table|safe }}</div>
+      <span class='label'>New name:</span> <input id='name'></input>
+      <span class='label'>  Age:</span> <input id='age'></input>
     </div>
+    <p>The current data:</p>
+    <div id='tbl'></div>
   </body>
+
 </html>

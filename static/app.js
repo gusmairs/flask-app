@@ -5,18 +5,27 @@ add_name = function(n, a) {
         method: 'POST',
         data: JSON.stringify({'name': n, 'age': a}),
         success: function(resp) {
-            console.log('got it')
-            location.reload()
-            // $('#table_loc' ).load(resp)
+            $('#tbl').html(resp['table'])
         }
     })
 }
 
 $(document).ready(function() {
+    $.ajax({
+        url: '/show',
+        contentType: 'application/json',
+        method: 'GET',
+        success: function(resp) {
+            $('#tbl').html(resp['table'])
+            $('#name').focus()
+        }
+    })
     $('#age').on('keypress', function(e){
         if(e.which == 13) {
             add_name($('#name').val(),
                      $('#age').val())
+            $('#age').val('')
+            $('#name').val('').focus()
         }
     })
 })

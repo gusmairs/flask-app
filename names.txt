@@ -1,6 +1,14 @@
 name,age
 amy,44
 bob,23
-lucy,12
-steve,67
-bob,67
+helen,78
+stephan,28
+sue,45
+sally,45
+georgia,67
+kate,98
+wowie,67
+noob,12
+sally,56
+nancy,67
+timmy,98

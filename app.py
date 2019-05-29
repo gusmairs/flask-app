@@ -3,22 +3,22 @@ import pandas as pd
 
 app = Flask(__name__, static_url_path='')
 
+def get_table():
+    names_df = pd.read_csv('names.txt')
+    tbl = names_df.to_html(border=0, index=False, escape=False)
+    return tbl
+
 @app.route('/')
 def index():
-    contacts = pd.read_csv('names.txt')
-    t = contacts.to_html(border=0, index=False, escape=True)
-    return render_template('index.html',
-                           message='Hello, my friend!',
-                           table=t)
+    return render_template('index.html')
+
+@app.route('/show', methods=['GET'])
+def show_table():
+    return jsonify({'table': get_table()})
 
 @app.route('/add', methods=['POST'])
-def add_name():
+def add_data():
     name, age = (request.json['name'], request.json['age'])
     with open('names.txt', 'a') as file:
         file.write(name + ',' + age + '\n')
-    contacts = pd.read_csv('names.txt')
-    t = contacts.to_html(border=0, index=False, escape=True)
-    return jsonify({'table': t})
-    # return render_template('index.html',
-    #                        message='New name added.',
-    #                        table=t)
+    return jsonify({'table': get_table()})
