@@ -3,7 +3,7 @@ add_name = function(n, a) {
         url: '/add',
         contentType: 'application/json',
         method: 'POST',
-        data: JSON.stringify({'name': n, 'age': a}),
+        data: JSON.stringify({'name': n, 'age': parseInt(a)}),
         success: function(resp) {
             $('#tbl').html(resp['table'])
         }
