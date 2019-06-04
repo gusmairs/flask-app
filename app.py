@@ -1,11 +1,16 @@
 from flask import Flask, request, render_template, jsonify
 import pandas as pd
+import pymongo
 
 app = Flask(__name__, static_url_path='')
 
+mongo = pymongo.MongoClient()
+db = mongo['one_db']
+names = db['customers']
+
 def get_table():
-    names_df = pd.read_csv('names.txt')
-    tbl = names_df.to_html(border=0, index=False, escape=False)
+    names_df = pd.DataFrame(list(names.find({}, {'_id': 0})))
+    tbl = names_df[['name', 'age']].to_html(border=0, index=False)
     return tbl
 
 @app.route('/')
@@ -18,7 +23,5 @@ def show_table():
 
 @app.route('/add', methods=['POST'])
 def add_data():
-    name, age = (request.json['name'], request.json['age'])
-    with open('names.txt', 'a') as file:
-        file.write(name + ',' + age + '\n')
+    names.insert_one(request.json)
     return jsonify({'table': get_table()})
