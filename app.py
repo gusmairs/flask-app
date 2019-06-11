@@ -9,7 +9,8 @@ db = mongo['one_db']
 
 def get_table():
     names_df = pd.DataFrame(list(db.people.find({}, {'_id': 0})))
-    tbl = names_df[['name', 'age']].to_html(border=0, index=False)
+    tbl = names_df[['name', 'age']].to_html(table_id='wowie',
+                                            border=0, index=False)
     return tbl
 
 @app.route('/')

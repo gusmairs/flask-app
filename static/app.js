@@ -11,6 +11,9 @@ add_name = function(n, a) {
 }
 
 $(document).ready(function() {
+    $('#tbl').on('click', '#wowie tr', function(){
+        console.log('that is:', $(this).find('td:nth-child(1)').text())
+    })
     $.ajax({
         url: '/show',
         contentType: 'application/json',
