@@ -11,9 +11,10 @@ add_name = function(n, a) {
 }
 
 $(document).ready(function() {
-    $('#tbl').on('click', '#wowie tr', function(){
+    $('#tbl').on('click', '.dataframe tr', function(){
         console.log('that is:', $(this).find('td:nth-child(1)').text())
     })
+
     $.ajax({
         url: '/show',
         contentType: 'application/json',
@@ -23,6 +24,7 @@ $(document).ready(function() {
             $('#name').focus()
         }
     })
+
     $('#age').on('keypress', function(e){
         if(e.which == 13) {
             add_name($('#name').val(),
