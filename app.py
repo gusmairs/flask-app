@@ -29,5 +29,5 @@ def add_data():
 
 @app.route('/detail', methods=['POST'])
 def get_detail():
-    mg_dat = db.people.find_one({'_id': ObjectId(request.json['id'])})
-    return jsonify({'name': mg_dat['name']})
+    mg_one = db.people.find_one({'_id': ObjectId(request.json['id'])})
+    return jsonify({'name': mg_one['name']})
