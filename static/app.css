@@ -6,32 +6,35 @@ html {
 table {
   font-size: 0.8rem;
   margin: 2%;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   perspective: 1px;
-  background-color: #f9f9f9;
+  background-color: #f6f6f6;
   border-collapse: collapse;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+td, th {
+  text-align: center;
+  border: 1px solid #999;
+  padding: 8px;
 }
 
 th {
   color: royalblue;
-  text-align: center;
-  border-bottom: 1px solid #686888;
-  background-color: #eeeeee;
-  padding: 8px;
+  /* border-bottom: 1px solid #686888; */
+  background-color: #e6e6e6;
 }
 
 tr {
   border-collapse: separate;
 }
 
-tr:nth-child(even) {
-  background-color: #eeeeee;
+tr:hover {
+  background-color: #ddd;
 }
 
-td {
-  text-align: center;
-  padding: 8px;
+tr > *:nth-child(1) {
+    display: none;
 }
 
 #main {
@@ -44,6 +47,10 @@ td {
   height: 24px;
   text-indent: 6px;
   font-size: 0.8rem;
+}
+
+#detail {
+  color: royalblue;
 }
 
 .label {

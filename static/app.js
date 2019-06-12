@@ -10,9 +10,22 @@ add_name = function(n, a) {
     })
 }
 
+get_detail = function(i) {
+    $.ajax({
+        url: '/detail',
+        contentType: 'application/json',
+        method: 'POST',
+        data: JSON.stringify({'id': i}),
+        success: function(resp) {
+            $('#detail').text(resp['name'])
+        }
+    })
+}
+
 $(document).ready(function() {
     $('#tbl').on('click', '.dataframe tr', function(){
-        console.log('that is:', $(this).find('td:nth-child(1)').text())
+        id = $(this).find('td:nth-child(1)').text()
+        get_detail(id)
     })
 
     $.ajax({
