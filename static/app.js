@@ -6,6 +6,7 @@ add_name = function(n, a) {
         data: JSON.stringify({'name': n, 'age': parseInt(a)}),
         success: function(resp) {
             $('#tbl').html(resp['table'])
+            $('#name').focus()
         }
     })
 }
@@ -18,16 +19,12 @@ get_detail = function(i) {
         data: JSON.stringify({'id': i}),
         success: function(resp) {
             $('#detail').text(resp['name'])
+            $('#name').focus()
         }
     })
 }
 
-$(document).ready(function() {
-    $('#tbl').on('click', '.dataframe tr', function(){
-        id = $(this).find('td:nth-child(1)').text()
-        get_detail(id)
-    })
-
+$().ready(function() {
     $.ajax({
         url: '/show',
         contentType: 'application/json',
@@ -45,5 +42,10 @@ $(document).ready(function() {
             $('#age').val('')
             $('#name').val('').focus()
         }
+    })
+
+    $('#tbl').on('click', '.dataframe tr', function(){
+        id = $(this).find('td:nth-child(1)').text()
+        get_detail(id)
     })
 })
