@@ -18,6 +18,7 @@ get_detail = function(i) {
         method: 'POST',
         data: JSON.stringify({'id': i}),
         success: function(resp) {
+            $('#click').show();
             $('#detail').text(resp['name'])
             $('#name').focus()
         }
