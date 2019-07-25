@@ -33,9 +33,10 @@ tr:hover {
   background-color: #ddd;
 }
 
-tr > *:nth-child(1) {
+/* Hides the mongodb _id column for display */
+/* tr > *:nth-child(1) {
     display: none;
-}
+} */
 
 #main {
   font-size: 1.2rem;
