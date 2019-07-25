@@ -15,13 +15,13 @@ def get_table():
     con = sql.connect(db)
     c = con.cursor()
     dat = c.execute('''
-        select name, age from names
+        select rowid, name, age from names
         ;
         ''')
     # mg_dat = db.people.find().sort('age', -1)
-    names_df = pd.DataFrame(dat.fetchall(), columns=['name', 'age'])
+    names_df = pd.DataFrame(dat.fetchall(), columns=['id', 'name', 'age'])
     # names_df = pd.DataFrame(list(mg_dat))
-    tbl = names_df[['name', 'age']].to_html(border=0, index=False)
+    tbl = names_df[['id', 'name', 'age']].to_html(border=0, index=False)
     con.close()
     return tbl
 
@@ -35,7 +35,6 @@ def show_table():
 
 @app.route('/add', methods=['POST'])
 def add_data():
-    print(request.json['name'], request.json['age'])
     con = sql.connect(db)
     c = con.cursor()
     c.execute('''
@@ -49,5 +48,13 @@ def add_data():
 
 @app.route('/detail', methods=['POST'])
 def get_detail():
-    mg_one = db.people.find_one({'_id': ObjectId(request.json['id'])})
-    return jsonify({'name': mg_one['name']})
+    con = sql.connect(db)
+    c = con.cursor()
+    n = c.execute('''
+        select name from names where rowid = ?
+        ;
+        ''', (request.json['id']))
+    name = n.fetchone()
+    con.close()
+    # mg_one = db.people.find_one({'_id': ObjectId(request.json['id'])})
+    return jsonify({'name': name})
