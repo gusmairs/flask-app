@@ -1,14 +1,10 @@
 from flask import Flask, request, render_template, jsonify
-from bson.objectid import ObjectId
 import pandas as pd
 import sqlite3 as sql
-# import pymongo
 
 
 app = Flask(__name__, static_url_path='')
 
-# mongo = pymongo.MongoClient()
-# db = mongo['one_db']
 db = 'flask.db'
 
 def get_table():
@@ -16,11 +12,10 @@ def get_table():
     c = con.cursor()
     dat = c.execute('''
         select rowid, name, age from names
+        order by age desc
         ;
         ''')
-    # mg_dat = db.people.find().sort('age', -1)
     names_df = pd.DataFrame(dat.fetchall(), columns=['id', 'name', 'age'])
-    # names_df = pd.DataFrame(list(mg_dat))
     tbl = names_df[['id', 'name', 'age']].to_html(border=0, index=False)
     con.close()
     return tbl
@@ -43,7 +38,6 @@ def add_data():
         ''', (request.json['name'], request.json['age']))
     con.commit()
     con.close()
-    # db.people.insert_one(request.json)
     return jsonify({'table': get_table()})
 
 @app.route('/detail', methods=['POST'])
@@ -53,8 +47,7 @@ def get_detail():
     n = c.execute('''
         select name from names where rowid = ?
         ;
-        ''', (request.json['id']))
-    name = n.fetchone()
+        ''', (request.json['id'], ))
+    name = n.fetchall()
     con.close()
-    # mg_one = db.people.find_one({'_id': ObjectId(request.json['id'])})
     return jsonify({'name': name})
