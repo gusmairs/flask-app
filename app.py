@@ -4,7 +4,8 @@ import sqlite3 as sql
 
 app = Flask(__name__, static_url_path='')
 
-con = sql.connect('flask.db')
+db = '/Users/gusmairs/OneDrive/DS_Study/flask-app/data/flask.db'
+con = sql.connect(db)
 c = con.cursor()
 
 def get_table():
