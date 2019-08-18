@@ -1,4 +1,4 @@
-### Basic Flask app with SQLite backend
+### Essential Flask app using SQLite  
 
 Shows how the Flask, jQuery (JavaScript), Ajax and CSS parts fit together, avoids Jinja templating in Flask. Demonstrates SQLite database access and data editing. Also demonstrates a clickable row that retrieves and displays data from the mouse position.
 

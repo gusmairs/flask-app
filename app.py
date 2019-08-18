@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+
+# Flask app here drives the web site using a file-based sqlite database that
+# does not sit in this repo. The sqlite3 parameter substitution method uses '?'
+# placeholders with a tuple following the query string.
+
+# The app renders the HTML table here on the server side using the convenience
+# of the pandas::df.to_html() method.
+
 from flask import (
     Flask, request, render_template, jsonify
 )
@@ -17,8 +26,11 @@ def get_table():
         ;
     '''
     dat = c.execute(qry)
-    names_df = pd.DataFrame(dat.fetchall(), columns=['id', 'name', 'age'])
-    tbl = names_df[['id', 'name', 'age']].to_html(border=0, index=False)
+    names_df = pd.DataFrame(
+        dat.fetchall(),
+        columns=['id', 'name', 'age']
+    )
+    tbl = names_df.loc[:, ['id', 'name', 'age']].to_html(border=0, index=False)
     return tbl
 
 @app.route('/')
