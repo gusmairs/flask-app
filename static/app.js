@@ -38,8 +38,10 @@ $().ready(function() {
 
     $('#age').on('keypress', function(e){
         if(e.which == 13) {
-            add_name($('#name').val(),
-                     $('#age').val())
+            add_name(
+                $('#name').val(),
+                $('#age').val()
+            )
             $('#age').val('')
             $('#name').val('').focus()
         }
