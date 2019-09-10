@@ -4,8 +4,10 @@ Shows how the Flask, jQuery (JavaScript), Ajax and CSS parts fit together, avoid
 
 To run the demo from the command line:  
 
-`$ export FLASK_APP=app.py FLASK_ENV=development`  
-`$ flask run`  
+```
+$ export FLASK_APP=app.py FLASK_ENV=development  
+$ flask run  
+```
 
 Running in the Flask development environment auto-reloads the server with changes to the code files. The default port is `127.0.0.1:5000`. Use `<Ctrl-C>` in the terminal window to kill the server process.  
 
